@@ -9,8 +9,8 @@ LANG: C++
 
 using namespace std;
 
-pair<int, pair<int,int>> weight[1001];
-int mem[1001];
+pair<int, pair<int,int>> weight[100001];
+int mem[100001];
 int n,m;
 
 int find_parent(int x)
