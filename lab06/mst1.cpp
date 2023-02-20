@@ -9,64 +9,57 @@ LANG: C++
 
 using namespace std;
 
-pair <int, pair<int,int>> edge[1001];
-int root[1001];
-int n,m,i,minWeight=0;
+pair<int, pair<int,int>> weight[1001];
+int mem[1001];
+int n,m;
 
-void readInput()
+int find_parent(int x)
 {
-    int u,v,w,i;
-    cin >> n >> m;
-    for (i=0;i<m;i++)
+    while (mem[x] != x)
     {
-        cin >> u >> v >> w;
-        edge[i] = make_pair(w,make_pair(u,v));
-    }
-    sort(edge,edge+m);
-}
-
-void init()
-{
-    for (i=1;i<=n;i++)
-        root[i] = i;
-}
-
-int parent(int x)
-{
-    while (root[x] != x)
-    {
-        root[x] = root[root[x]];
-        x = root[x];
+        mem[x] = mem[mem[x]];
+        x = mem[x];
     }
     return x;
 }
 
-void unionFind(int x, int y)
+void mem_union(int x, int y)
 {
-    int a = parent(x);
-    int b = parent(y);
-    root[a] = root[b];
+    int u,v;
+    u = find_parent(x);
+    v = find_parent(y);
+    mem[u] = mem[v];
 }
 
-void kruskal()
+int mst_kruskal()
 {
-    for (i=0;i<m;i++)
+    int ans=0,a,b,w;
+    for (int i=0;i<m;i++)
     {
-        int u = edge[i].second.first;
-        int v = edge[i].second.second;
-        int w = edge[i].first;
-        if (parent(u) != parent(v))
+        w = weight[i].first;
+        a = weight[i].second.first;
+        b = weight[i].second.second;
+        if (find_parent(a) != find_parent(b))
         {
-            minWeight += w;
-            unionFind(u,v);
+            ans += w;
+            mem_union(a,b);
         }
     }
+    return ans;
 }
 
 int main()
 {
-    readInput();
-    init();
-    kruskal();
-    cout << minWeight << endl;
+    int a,b,w,ans;
+    cin >> n >> m;
+    for (int i=1;i<=n;i++)
+        mem[i] = i;
+    for (int i=0;i<m;i++)
+    {
+        cin >> a >> b >> w;
+        weight[i] = make_pair(w,make_pair(a,b));
+    }
+    sort(weight,weight+m);
+    ans = mst_kruskal();
+    cout << ans << endl;
 }
