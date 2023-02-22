@@ -52,9 +52,7 @@ void topo(vector<int> arr[], int visited[])
     }
     while (st.empty() == 0)
     {
-        int x;
-        x = st.top();
-        cout << x << endl;
+        cout << st.top() << endl;
         st.pop();
     }
 }
