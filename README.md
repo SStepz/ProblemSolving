@@ -1,7 +1,7 @@
 # Problem Solving
 All code for Problem Solving
   
-## TODO TOTAL : 21
+## TODO TOTAL : 26
 
 Midterm : 0/3  
 Week 1 : Done  
@@ -10,3 +10,4 @@ Week 3 : Done
 Week 4 : 3/8  
 Week 5 : 0/7  
 Week 6 : 2/8  
+Week 7 : 0/5  
