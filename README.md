@@ -1,7 +1,7 @@
 # Problem Solving
 All code for Problem Solving
   
-## TODO TOTAL : 27
+## TODO TOTAL : 30
 
 Midterm : 0/3  
 Week 1 : Done  
