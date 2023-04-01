@@ -13,4 +13,4 @@ Week 5 : 1/7
 Week 6 : 2/8  
 Week 7 : 0/5  
 Week 8 : 0/6  
-Optional : 2/10
+Optional : 4/10
