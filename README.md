@@ -1,8 +1,9 @@
-# Problem Solving
-All code for Problem Solving
+# Problem Solving  
+All code for Problem Solving  
   
-## TODO TOTAL : 24
-
+## SCORE : 39/70  
+## TODO TOTAL : 24  
+  
 Midterm : 0/3  
 Final : 0/3  
 Week 1 : Done  
