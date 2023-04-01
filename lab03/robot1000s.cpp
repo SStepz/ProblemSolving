@@ -9,7 +9,8 @@ using namespace std;
 
 int main()
 {
-    int n,k,x=0,y=0,e=0;
+    int n,k,tmp;
+    int step[4]={0};
     string way;
     getline(cin,way);
     cin >> k;
@@ -19,48 +20,50 @@ int main()
         for (int i=0;i<n;i++)
         {
             if (way[i] == 'N')
-                y += 1;
+                step[0] += 1;
             else if (way[i] == 'S')
-                y -= 1;
+                step[1] += 1;
             else if (way[i] == 'E')
-                x += 1;
+                step[2] += 1;
             else if (way[i] == 'W')
-                x -= 1;
-            else if (way[i] == 'Z')
-            {
-                x = 0;
-                y = 0;
-            }
+                step[3] += 1;
+        }
+        if (step[1] > step[0])
+        {
+            tmp = step[0];
+            step[0] = step[1];
+            step[1] = tmp;
+        }
+        if (step[3] > step[2])
+        {
+            tmp = step[2];
+            step[2] = step[3];
+            step[3] = tmp;
         }
         while (k != 0)
         {
-            if (x > 0)
+            if (step[1] != 0)
             {
-                e += 1;
-                x -= 1;
+                step[1] -= 1;
+                k -= 1;
             }
-            else if (x < 0)
+            else if (step[3] != 0)
             {
-                e += 1;
-                x += 1;
+                step[3] -= 1;
+                k -= 1;
             }
-            else if (y > 0)
+            else if (step[0] != 0)
             {
-                e += 1;
-                y -= 1;
+                step[0] -= 1;
+                k -= 1;
             }
-            else if (y < 0)
+            else if (step[2] != 0)
             {
-                e += 1;
-                y += 1;
-            }
-            else if (x == 0 && y == 0)
-            {
-                e += 1;
+                step[2] -= 1;
                 k -= 1;
             }
         }
-        cout << 2*e << endl;
+        cout << 2*(step[0] + step[2] - step[1] - step[3]) << endl;
     }
     else
         cout << 0 << endl;
