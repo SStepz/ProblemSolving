@@ -2,7 +2,7 @@
 All code for Problem Solving  
   
 ## SCORE : 56/70  
-## TODO TOTAL : 23  
+## TODO TOTAL : 14  
   
 Midterm : 0/3  
 Final : 0/3  
