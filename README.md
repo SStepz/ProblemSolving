@@ -1,8 +1,8 @@
 # Problem Solving  
 All code for Problem Solving  
   
-## SCORE : 65/70  
-## TODO TOTAL : 5  
+## SCORE : 66/70  
+## TODO TOTAL : 4  
   
 Midterm : 0/3  
 Final : 0/3  
@@ -14,5 +14,5 @@ Week 5 : 2/7
 Week 6 : 5/8  
 Week 7 : 3/5  
 Week 8 : 2/6  
-Optional : 22  
+Optional : 23  
 Unfinished Score : 4.1  
