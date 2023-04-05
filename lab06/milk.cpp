@@ -7,7 +7,7 @@ LANG: C++
 using namespace std;
 
 int n,q;
-int par[100001];
+int par[100001],ranks[100001];
 
 int finds(int x)
 {
@@ -20,7 +20,10 @@ void unions(int px, int py)
 {
     if (px == py)
         return;
-    par[px] = py;
+    if (ranks[px] < ranks[py])
+        swap(px,py);
+    par[py] = px;
+    ranks[px] += ranks[py];
 }
 
 int main()
@@ -29,7 +32,10 @@ int main()
     int x,y,px,py;
     cin >> n >> q;
     for (int i=1;i<=n;i++)
+    {
         par[i] = i;
+        ranks[i] = 1;
+    }
     for (int i=0;i<q;i++)
     {
         cin >> c >> x >> y;
