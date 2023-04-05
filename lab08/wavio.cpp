@@ -3,57 +3,53 @@ LANG: C++
 */
 
 #include <iostream>
+#include <stack>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
+int n;
+vector<int> temp;
+
+void findlength(vector<int> &arr, vector<int> &length)
+{
+    int num,pos;
+    for (int i=0;i<n;i++)
+    {
+        num = arr[i];
+        pos = lower_bound(temp.begin(),temp.end(),num) - temp.begin();
+        if (pos == temp.size())
+            temp.push_back(num);
+        else
+            temp[pos] = num;
+        length[i] = pos+1;
+    }
+    temp.clear();
+}
+
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    int n,tmp,ans;
-    while (scanf("%d", &n) != EOF)
+    int tmp;
+    while (cin >> n)
     {
-        ans = 0;
-        int arr[n+1],dp1[n+1],dp2[n+1];
-        for (int i=1;i<=n;i++)
-            scanf("%d", &arr[i]);
-        for (int i=1;i<=n;i++)
+        int ans=0;
+        vector<int> arr(n),up(n),down(n);
+        for (int i=0;i<n;i++)
+            cin >> arr[i];
+        findlength(arr,up);
+        reverse(arr.begin(),arr.end());
+        findlength(arr,down);
+        for (int i=0;i<n;i++)
         {
-            dp1[i] = 1;
-            for (int j=1;j<i;j++)
-            {
-                if (arr[j] < arr[i])
-                {
-                    tmp = dp1[j] + 1;
-                    if (tmp > dp1[i])
-                        dp1[i] = tmp;
-                }
-            }
-        }
-        for (int i=n;i>=1;i--)
-        {
-            dp2[i] = 1;
-            for (int j=n;j>i;j--)
-            {
-                if (arr[j] < arr[i])
-                {
-                    tmp = dp2[j] + 1;
-                    if (tmp > dp2[i])
-                        dp2[i] = tmp;
-                }
-            }
-        }
-        for (int i=1;i<=n;i++)
-        {
-            if (dp1[i] < dp2[i])
-                tmp = dp1[i];
+            if (down[n-i-1] < up[i])
+                tmp = down[n-i-1];
             else
-                tmp = dp2[i];
+                tmp = up[i];
             tmp = (tmp*2)-1;
             if (tmp > ans)
                 ans = tmp;
         }
-        printf("%d\n", ans);
+        cout << ans << "\n";
     }
 }
