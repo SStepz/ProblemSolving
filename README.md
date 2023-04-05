@@ -15,4 +15,4 @@ Week 6 : 2/8
 Week 7 : 0/5  
 Week 8 : 0/6  
 Optional : 21  
-Unfinished Score : 3.1  
+Unfinished Score : 3.6  
